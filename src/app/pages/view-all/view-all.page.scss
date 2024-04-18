@@ -1,0 +1,11 @@
+@import "./../../../assets/styles/card";
+@import "./../../../assets/styles/play-list";
+
+ion-content{
+  --padding-top: 3.2rem;
+}
+
+.createList-cards{
+  height: calc(100vh - 120px);
+  overflow: auto;
+}

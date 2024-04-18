@@ -1,0 +1,29 @@
+<div class="inner-content">
+  <ion-toolbar>
+      <div class="header-info">{{title | translate}}</div>
+  </ion-toolbar>
+
+ <ion-item class="roundedInput" *ngIf="title !== 'Add Diksha URL'">
+   <ion-input type="text" [(ngModel)]="name" [placeholder]="placeholder | translate"></ion-input>
+  </ion-item>
+  <ion-item class="roundedInput" *ngIf="title !== 'New Playlist'">
+    <ion-input type="url" [(ngModel)]="url" [placeholder]="'url' | translate" (ionInput)="onInputChange()"></ion-input>
+  </ion-item>
+  <ion-item lines="none" *ngIf="errMsg">
+    <ion-label color="danger">{{errMsg | translate}}</ion-label>
+  </ion-item>
+  
+ <div class="btn-row">
+  <ion-row>
+    <ion-col size="6" class="btn-pr-8">
+      <ion-button fill="outline" expand="block" class="app-rate-btn-outline" (click)="cancel()">
+        {{'Cancel' | translate}}</ion-button>
+    </ion-col>
+    <ion-col size="6" class="btn-pl-8">
+      <ion-button expand="block" color="warning" class="app-rate-btn app-rate-btn-ellipsis" (click)="createPlaylist()">
+        {{'Create' | translate}}</ion-button>
+    </ion-col>
+  </ion-row>
+</div>
+</div>
+

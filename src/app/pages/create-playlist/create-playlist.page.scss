@@ -1,0 +1,36 @@
+@import "./../../../assets/styles/card";
+@import "./../../../assets/styles/play-list";
+
+ion-content {
+  --padding-top: 2.5rem;
+}
+
+ion-item {
+  width: 100%;
+}
+
+ion-input {
+  --placeholder-opacity: 0.5;
+}
+
+.create-playlist {
+  padding: 1rem;
+}
+
+.create-playlist-container {
+  margin-top: 1rem;
+  height: calc(100vh - 195px);
+  overflow-y: auto;
+}
+
+.bot-section__text{    
+  position: absolute;
+  left: 46%;
+  right: 0;
+  top: 16%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: var(--ion-color-medium);
+  font-size: 0.75rem;
+}
+

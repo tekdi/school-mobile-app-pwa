@@ -1,0 +1,34 @@
+<div class="inner-content">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="medium">{{'Add to Pitara' | translate}}</ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button [strong]="true" (click)="newPitaraList()" class="new-pitara">
+        <ion-icon name="add-circle-outline" style="padding-right: 4px;"></ion-icon>
+        {{'New Pitara' | translate}}
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <div *ngIf="playlists.length">
+    <hr style="border: 1px solid lightgray;">
+    <ion-radio-group [(ngModel)]="selectedContentId" (ionChange)="playlistSelected($event)">
+      <ion-list lines=“none”>
+        <ion-item *ngFor="let playlist of playlists" class="no-border">
+          <ion-label lines=“none”>{{playlist.name}}</ion-label>
+          <ion-radio value="custom-checked" slot="start" value="{{playlist.identifier}}"></ion-radio>
+        </ion-item>
+      </ion-list>
+    </ion-radio-group>
+    <hr style="border: 1px solid lightgray;">
+  </div>
+  <p *ngIf="!playlists.length" class="empty-list-text">{{"No playlist add yet" | translate}}</p>
+  <ion-toolbar>
+    <ion-item lines="none" *ngIf="playlists.length > 0 && (content.metaData.mimetype === 'video/mp4' || content.metaData.mimetype === 'application/pdf') && (content.sourceType === 'Diksha' || content.metaData.identifier?.startsWith('do_'))">
+      <ion-checkbox label-placement="end" justify="start" [checked]="checked" [(ngModel)]="checked">{{'Download and Add' | translate }}</ion-checkbox>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-button class="btn-info" slot="end" [strong]="true" (click)="saveContent()">{{'Done' | translate}}</ion-button>
+    </ion-item>
+  </ion-toolbar>
+</div>

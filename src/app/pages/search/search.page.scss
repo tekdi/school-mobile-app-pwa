@@ -1,0 +1,65 @@
+@import "./../../../assets/styles/card";
+
+ion-header {
+  box-shadow: none;
+  ion-icon {
+    color: var(--ion-color-primary);
+  }
+}
+
+ion-content {
+  --padding-top: 0 !important;
+}
+
+.header-content {
+    display: flex;
+}
+  
+::ng-deep {
+  .toolbar-container{
+    padding: 0 !important;
+    min-height: auto;
+  }
+}
+
+ion-input {
+  margin-top: 0.5rem;
+  min-height: 3rem !important;
+  --border-color: var(--ion-color-medium) !important;
+  --highlight-color: var(--ion-color-secondary-contrast) !important;
+}
+
+ion-icon {
+    width: 1.75rem;
+    height: 1.75rem;
+    margin-left: 0;
+}
+
+.card {
+  &__img {
+    width: 40%;
+    height: auto;
+    img {
+      max-width: 90% !important;
+    }
+  }
+  &__metadata {
+    padding-top: 0;
+    padding-left: 1rem;
+    align-items: center;
+    width: 60%;
+    height: 90%;
+  }
+}
+
+ion-list { 
+  background-color: transparent;
+}
+
+ion-item {
+  --background: transparent;
+}
+
+.search_text {
+  text-align: center;
+}

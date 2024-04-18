@@ -1,0 +1,37 @@
+<ion-content [fullscreen]="true">
+  <div class="create-playlist">
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="playlistName" (ionInput)="playlistNameChange()" placeholder="Name Your Playlist" opacity="0.5"></ion-input>
+      <ion-icon slot="end" aria-hidden="true" src="assets/icon/edit.svg"></ion-icon>
+    </ion-item>
+    <div class="create-playlist-container">
+      <div *ngIf="!selectedContents.length" class="bot-section__text">{{ 'Add content to the playlist' | translate}}</div>
+      <div class="card" *ngFor="let content of selectedContents; let i=index">
+        <div class="card__img">
+          <img [src] ="content?.metaData?.thumbnail ? content?.metaData?.thumbnail : '../../../assets/images/slider-img.svg'"  alt="Playlist Image">
+        </div>
+        <div class="card__metadata">
+          <div class="card__title">{{content?.metaData?.name}}</div>
+          <ion-checkbox [checked]="content.isSelected" (ionChange)="isContentSelect($event, i)"></ion-checkbox>
+        </div>
+      </div>
+    </div>
+    </div>
+</ion-content>
+
+<div class="view-all-btn">
+  <div class="view-playlist">
+    <div class="view-playlist__icon">
+      <div class="count">{{reSelectedContent.length}}</div>
+      <ion-icon aria-hidden="true" src="assets/icon/pitara-blue.svg"></ion-icon>
+    </div>
+    <div class="view-playlist__icon" (click)="uploadLocalContents()">
+      <ion-icon aria-hidden="true" src="assets/icon/file-upload.svg"></ion-icon>
+    </div>
+    <div class="view-playlist__button">
+      <ion-button fill="outline" class="new-playlist__btn" [disabled]="disableCreateBtn" (click)="createList()">
+        {{'Save Playlist' | translate}}
+      </ion-button>
+    </div>
+  </div>
+</div>

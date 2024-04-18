@@ -1,0 +1,30 @@
+<ion-content [fullscreen]="true">
+  <div class="bot-section" *ngIf="!playlists.length">
+    <div class="bot-section__text">{{ 'Add content to the playlist' | translate}}</div>
+  </div>
+  <div class="cards-container" *ngFor="let content of playlists; let i = index">
+    <div class="card" *ngIf="content?.metaData">
+      <div class="card__img" (click)="playContent(content)">
+        <img [src]="(content?.metaData?.thumbnail && !content.metaData.identifier.startsWith('do_')) ? content?.metaData?.thumbnail : 'assets/images/Audio.png'" alt="" *ngIf="content?.metaData?.mimetype === mimeType.AUDIO">
+        <img appThumbnail [appThumbnail]="content?.metaData" alt="" *ngIf="content?.metaData?.mimetype === mimeType.YOUTUBE && !content.play">
+        <img [src]="(content?.metaData?.thumbnail && !content.metaData.identifier.startsWith('do_')) ? content?.metaData?.thumbnail : 'assets/images/Video.png'" alt="" *ngIf="content?.metaData?.mimetype === mimeType.MP4">
+        <img [src]="(content?.metaData?.thumbnail && !content.metaData.identifier.startsWith('do_')) ? content?.metaData?.thumbnail : 'assets/images/PDF.png'" alt="" *ngIf="content?.metaData?.mimetype === mimeType.PDF">
+        <!-- <ion-img *ngIf="content.metaData.thumbnail && !content.play" [src]="content.metaData.thumbnail" alt=""/>
+        <ion-img *ngIf="!content.metaData.thumbnail && !content.play" [src]="loadYoutubeImg(content.metaData.identifier)" alt=""/> -->
+        <!-- <div *ngIf="content.metaData.mimetype === 'video/x-youtube' && content.play">
+          <iframe title="" width="380" height="200" allowfullscreen [src]="sanitiseUrl(content.metaData.url)"></iframe>
+        </div> -->
+        <!-- <div class="landscape-icon" (click)="switchLandscape(content)">
+          <ion-icon name="scan" size="large" color="light"></ion-icon>
+        </div> -->
+      </div>
+      <div class="card__metadata">
+        <div class="card__title">{{content.metaData?.name}}</div>
+        <ion-buttons>  
+          <ion-icon aria-hidden="true" class="icon-right" src="assets/icon/sd-card.svg" *ngIf="content.source==='local'"></ion-icon>
+          <ion-icon aria-hidden="true" class="icon-left" src="assets/icon/kabab-icon.svg" (click)="moreOtions(content)"></ion-icon>
+        </ion-buttons>
+      </div>
+    </div>
+  </div>
+</ion-content>

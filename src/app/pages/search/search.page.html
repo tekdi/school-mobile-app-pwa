@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar class="custom-header">
+    <div class="header-content">
+      <ion-buttons slot="start" class="start-icon">
+        <ion-button (click)="navigateBack()">
+          <ion-icon aria-hidden="true" src="assets/icon/back.svg"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-input type="search" #searchInput (keyup.enter)="handleSearch()" fill="outline" shape="round"
+        (ngModelChange)="!searchContentResult" [disabled]="disabled"
+        [(ngModel)]="searchKeywords" [placeholder]="'SEARCH_HINT' | translate">
+      </ion-input>
+      <ion-buttons slot="end">
+        <ion-button (click)="onLongPressStart()" [disabled]="disabled">
+          <ion-icon aria-hidden="true" src="assets/icon/mic.svg"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list class="m-n" *ngIf="showSheenAnimation">
+    <ion-item lines="none">
+      <ion-label class="ion-text-center">{{ 'Searching...'| translate }}</ion-label>
+    </ion-item>
+    <ion-item *ngFor="let i of [0,1,2,3,4,5,6,7,8]" lines="none" style="padding: 5px;">
+        <div item-start style="border-radius: 16px;">
+            <app-skeleton-item height="100px" width="200px" radius="16px" style="border-radius: 16px;"></app-skeleton-item>
+        </div>
+        <ion-label style="padding-left: 10px;">
+            <app-skeleton-item height="12px" width="100px" style="padding-bottom: 8px;"></app-skeleton-item>
+            <app-skeleton-item height="12px" width="80px" style="padding-bottom: 8px;"></app-skeleton-item>
+        </ion-label>
+        <ion-label style="padding-left: 30px;">
+          <app-skeleton-item height="12px" width="10px" style="padding-bottom: 8px;"></app-skeleton-item>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-list *ngIf="!showSheenAnimation && noSearchData">
+    <ion-item lines="none">
+      <ion-label class="no-data">{{ errMsg | translate }}</ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-list *ngIf="!showSheenAnimation && searchContentResult.length > 0"> 
+    <ion-item lines="none" *ngFor="let content of searchContentResult; let i = index" class="card">
+      <div class="card__img" (click)="playContent($event, content)">
+        <img [src]="(content?.metaData?.thumbnail && !content.metaData.identifier.startsWith('do_')) ? content?.metaData?.thumbnail :'assets/images/Audio.png'" alt="" *ngIf="content.metaData.mimetype === mimeType.AUDIO">
+        <img appThumbnail [appThumbnail]="content?.metaData" alt="" *ngIf="content.metaData.mimetype === mimeType.YOUTUBE">
+        <img [src]="(content?.metaData?.thumbnail && !content.metaData.identifier.startsWith('do_')) ? content?.metaData?.thumbnail :'assets/images/Video.png'" alt="" *ngIf="content.metaData.mimetype === mimeType.MP4">
+        <img [src]="(content?.metaData?.thumbnail && !content.metaData.identifier.startsWith('do_')) ? content?.metaData?.thumbnail :'assets/images/PDF.png'" alt="" *ngIf="content.metaData.mimetype === mimeType.PDF">
+      </div>
+        <div class="card__metadata">
+          <div class="card__title">{{content.metaData?.name}}</div>
+          <ion-icon aria-hidden="true" src="assets/icon/kabab-icon.svg" (click)="moreOtions(content)"></ion-icon>
+        </div>
+    </ion-item>
+  </ion-list>
+</ion-content>

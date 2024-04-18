@@ -1,0 +1,7 @@
+{
+  "name": "e-Jaadui Pitara",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

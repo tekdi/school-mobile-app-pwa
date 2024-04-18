@@ -1,0 +1,41 @@
+{
+    "body": {
+        "result": {
+            "pageConfig": [{
+                "defaultFilter": {
+                    "id": "All",
+                    "label": "All",
+                    "query": "All",
+                    "filters": "All"
+                },
+                    "additionalFilters": [
+                        {
+                            "id": "Stories",
+                            "label": "Stories",
+                            "query": "Stories",
+                            "filters": "Stories"
+                        },
+                        {
+                            "id": "Stories1",
+                            "label": "Stories1",
+                            "query": "Stories1",
+                            "filters": "Stories1"
+                        }
+                    ]
+                       }
+            ],
+            "languages": [
+                {
+                    "id": "en",
+                    "label": "en",
+                    "default": true
+                },
+                {
+                    "id": "hi",
+                    "label": "hi",
+                    "default": false
+                }
+            ]
+        }
+    }
+}

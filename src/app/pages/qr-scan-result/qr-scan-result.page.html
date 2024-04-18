@@ -1,0 +1,49 @@
+<ion-content>
+  <ion-list class="m-n" *ngIf="showSheenAnimation">
+    <ion-item *ngFor="let i of [0,1,2,3,4,5,6,7,8]">
+      <div class="card">
+        <div item-start class="card__img">
+          <app-skeleton-item height="15rem" width="22rem" radius="16px"></app-skeleton-item>
+        </div>
+        <div class="card__metadata">
+          <div style="width: 90%;">
+            <app-skeleton-item height="12px" width="100%"></app-skeleton-item>
+          </div>
+          <div style="padding-left: 1.5rem; width: 10%;">
+            <app-skeleton-item height="12px" width="100%"></app-skeleton-item>
+          </div>
+        </div>
+      </div>
+    </ion-item>
+  </ion-list>
+  <div *ngIf="!configContents.length && !showSheenAnimation" class="text-not-available">{{'CONTENT_IS_BEING_ADDED' | translate}}</div>
+  <div *ngIf="!showSheenAnimation && configContents.length > 0">
+    <div class="cards-container" *ngFor="let content of configContents; let i = index">
+      <div class="bot-section" *ngIf="!content.metaData || !content.metaData.name">
+        <div class="image">
+          <img src="assets/images/Story_bot.svg" alt="">
+          <div class="image-title">{{"Make a Story" | translate }}</div>
+        </div>
+        <div class="image">
+          <img src="assets/images/Question_bot.svg" alt="">
+          <div class="image-title">{{"Ask a Doubt" | translate }}</div>
+        </div>
+      </div>
+      <div class="card" *ngIf="content.metaData && content.metaData.name">
+        <div class="card__img" (click)="playContent($event, content)">
+          <img [src]="(content?.metaData?.thumbnail && !content.metaData.identifier.startsWith('do_')) ? content?.metaData?.thumbnail :'assets/images/Audio.png'" alt="" *ngIf="content.metaData.mimetype === mimeType.AUDIO">
+          <img appThumbnail [appThumbnail]="content?.metaData" alt="" *ngIf="content.metaData.mimetype === mimeType.YOUTUBE && !content.play">
+          <img [src]="(content?.metaData?.thumbnail && !content.metaData.identifier.startsWith('do_')) ? content?.metaData?.thumbnail :'assets/images/Video.png'" alt="" *ngIf="content.metaData.mimetype === mimeType.MP4 || content.metaData.mimetype === mimeType.WEBM">
+          <img [src]="(content?.metaData?.thumbnail && !content.metaData.identifier.startsWith('do_')) ? content?.metaData?.thumbnail :'assets/images/PDF.png'" alt="" *ngIf="content.metaData.mimetype === mimeType.PDF">
+           
+          <!-- <ion-img [src]="content.metaData.thumbnail" alt=""/>
+          <ion-img *ngIf="!content.metaData.thumbnail" src="assets/images/defaultImg.png" alt=""/> -->
+        </div>
+        <div class="card__metadata">
+          <div class="card__title">{{content.metaData?.name}}</div>
+          <ion-icon aria-hidden="true" src="assets/icon/kabab-icon.svg" (click)="moreOtions(content)"></ion-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

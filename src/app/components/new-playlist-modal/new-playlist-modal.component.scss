@@ -1,0 +1,79 @@
+.btn-info{
+    height: 3rem;
+    width: 34%;
+    --border-radius: 1.25rem;
+    font-size: 0.875rem;
+    &__left{
+        margin-left: 0.625rem;
+    };
+    &__right{
+        margin-top: 3rem;
+    }
+}
+.header-info{
+    padding: 0.688rem 1rem;
+    color: #2F2C2A;
+    font-size: 1.1rem;
+    font-family: Noto Sans Devanagari;
+    font-weight: 700;
+    line-height: 25.20px;
+    word-wrap: break-word
+}
+
+.roundedInput {
+    --border-color: var(--ion-color-medium-shade);
+    --border-radius: 4rem;
+    --border-width: 1px;
+    --box-shadow: 2px gray;
+    --highlight-height: 0;
+   // opacity: 0.6;
+    --background: #f8f9fa;
+    padding: 0.5rem 1.125rem 0.938rem;
+   }
+
+
+   .app-rate-btn-outline{
+    border-color: var(--ion-color-primary-contrast);
+    color: var(--ion-color-medium);
+    height: 3rem;
+    --border-radius: 1.25rem;
+    font-size: 0.75rem;
+    font-family: Noto Sans;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 19.60px;
+    word-wrap: break-word;
+    --border-color: var(--ion-color-medium);
+  }
+
+  .app-rate-btn-ellipsis span{
+    display: block;
+  }
+
+  .app-rate-btn{
+    height: 3rem;
+    --border-radius: 1.25rem;
+    font-size: 0.75rem;
+    font-family: Noto Sans;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 19.60px;
+    word-wrap: break-word
+  }
+
+  .app-rate-btn::part(native) {
+    --ion-color-contrast: var(--ion-color-primary-contrast);
+}
+
+  .btn-row{
+    padding: 0 0.625rem 0.625rem;
+    margin-top: 0.625rem;
+  }
+
+  .btn-pr-8{
+    padding-right: 1rem;
+  }
+
+  .btn-pl-8{
+    padding-right: 1rem;
+  }

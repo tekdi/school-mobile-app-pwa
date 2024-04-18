@@ -1,0 +1,42 @@
+@import "./../../../assets/styles/card";
+
+ion-content {
+  --padding-top: 3.5rem
+}
+
+.landscape-icon {
+  position: absolute;
+  width: 100%;
+  background: transparent;
+  bottom: 3.5rem;
+  z-index: 9999;
+  background: var(--ion-color-secondary-contrast);
+  opacity: 0.5;
+
+  ion-icon {
+    float: right;
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+  }
+}
+
+.icon-right {
+  margin-right: 10px;
+}
+
+.icon-left {
+  margin-left: 10px;
+}
+
+.bot-section__text{    
+  position: absolute;
+  left: 46%;
+  right: 0;
+  top: 16%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: var(--ion-color-medium);
+  font-size: 0.75rem;
+}
+
+  

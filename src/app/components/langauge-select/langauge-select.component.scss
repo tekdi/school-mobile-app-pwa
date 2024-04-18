@@ -1,0 +1,13 @@
+.lang-content {
+    --background: var(--ion-color-primary-contrast);
+    --padding-top: 0;
+}
+
+ion-list {
+    overflow-y: auto;
+}
+
+ion-title {
+    color: var(--ion-color-primary);
+    font-size: 1rem;
+}

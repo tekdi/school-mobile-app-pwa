@@ -1,0 +1,24 @@
+ion-list {
+    overflow-y: auto;
+    padding: 0;
+}
+ion-label{
+    padding: 0 0 0 1rem;
+}
+.block {
+    --background: var(--ion-color-primary-contrast);
+    width: 100%;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.liked-icon {
+    color: var(--ion-color-tertiary);
+}
+
+ion-modal::part(backdrop) {
+    background: rgba(209, 213, 219);
+    opacity: 1;
+}

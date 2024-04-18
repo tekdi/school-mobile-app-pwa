@@ -1,0 +1,46 @@
+@import "./../../../assets/styles/card";
+
+ion-label {
+  width: 95%;
+}
+
+.refreshspinner {
+  stroke: #024f9d !important;
+  width: 1.875rem;
+  left: 0;
+  top: 0;
+  height: 2.5rem;
+  position: relative !important;
+}
+
+.spinner-div {
+  padding: 2.5rem;
+  background-color: #ECEFF0;
+  text-align: center;
+  border: none !important;
+}
+
+.landscape-icon {
+  position: absolute;
+  width: 100%;
+  background: transparent;
+  bottom: 3.5rem;
+  z-index: 9999;
+  background: var(--ion-color-secondary-contrast);
+  opacity: 0.5;
+
+  ion-icon {
+    float: right;
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+  }
+}
+
+
+ion-list { 
+  background-color: transparent;
+}
+
+ion-item {
+  --background: transparent;
+}

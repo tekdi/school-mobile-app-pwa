@@ -1,0 +1,74 @@
+
+ion-content{
+  --padding-top: 0;
+  --background: url('/assets/images/splash-bg1.png') center center / cover no-repeat; /* Set your image path */
+}
+
+.splash-screen{
+  .splash-screen-header{
+    height: 13%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 1rem 0.5rem 1rem;
+    background-color: #fff;
+    .MOE-logos{
+      img{
+        &:first-child{
+          width: 100px;
+          margin-right: 1rem;
+        }
+        &:last-child{
+          width: 36px;
+        }
+      }
+    }
+    .bhashini-logo{
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      img{
+        width: 65px;
+      }
+      .text{
+        font-size: 10px;
+      }
+    }
+  }
+  .splash-screen-img{
+    padding-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 41%;
+    .pm-logo{
+      width: 70%;
+    }
+  }
+  .splash-screen_box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 55%;
+    .pitara-box{
+      width: 80%;
+    }
+  }
+
+  .footer-img {
+    position: fixed;
+    bottom: -25%;
+    background: white;
+    border-radius: 50%;
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    left: 50%;
+    transform: translateX(-50%);
+    img {
+      width: 11rem;
+    }
+  }
+}
