@@ -31,7 +31,6 @@ export class ApplicationHeaderComponent  implements OnInit {
     }
 
   async ngOnInit() {
-    this.appInfo = await this.utilService.getAppInfo();
     this.defaultFilter = {};
     this.headerService.filterConfigEmitted$.subscribe((val: any) => {
       this.filters = [];
@@ -40,7 +39,9 @@ export class ApplicationHeaderComponent  implements OnInit {
       val.filter.forEach((item: any) => {
         this.filters.push(item);
       });
-    })
+    });
+       this.appInfo = await this.utilService.getAppInfo();
+
   }
 
   async scan() {

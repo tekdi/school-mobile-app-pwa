@@ -29,6 +29,7 @@
     "Add to Pitara": "Add to Pitara",
     "New Pitara": "New Pitara",
     "All Categories": "All Categories",
+    "Learning":"Learning",
     "Cancel": "Cancel",
     "View All": "View All",
     "No contents viewed": "No contents viewed",
@@ -81,5 +82,6 @@
     "Update Downloaded": "Update Downloaded",
     "The update has been downloaded. Would you like to restart the app to complete the update now?": "The update has been downloaded. Would you like to restart the app to complete the update now?",
     "Later": "Later",
-    "Restart Now": "Restart Now"
+    "Restart Now": "Restart Now",
+    "online courses":"Online Courses"
 }

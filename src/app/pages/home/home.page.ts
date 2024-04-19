@@ -153,10 +153,12 @@ export class HomePage implements OnInit, OnTabViewWillEnter, OnDestroy {
     })
     // side bar menu and filter chip events
     this.headerService.sideMenuItemEventEmitted$.subscribe(async (val: any) => {
+      let req = searchBody;
+      req['message']['intent']['item']['descriptor'].name = val.query;
       console.log(val);
       this.showSheenAnimation = true;
       try {
-        let res: any = await this.searchService.postContentSearch({ query: val.query, filter: val.filters }, await this.storage.getData('lang'));
+        let res: any = await this.searchService.postContentSearch(req, await this.storage.getData('lang'));
         console.log('Response', res);
         this.mappUIContentList(res);
       }

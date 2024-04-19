@@ -109,7 +109,7 @@ export class HttpCapacitorAdapter implements HttpClient {
             
                     // Push the mapped object into the array
                     mappedContent.push(content);
-                    console.log(mappedContent);
+                    // console.log(mappedContent);
                 });
             });
             

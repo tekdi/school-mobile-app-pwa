@@ -18,6 +18,7 @@ import { RecordingAlertComponent } from 'src/app/components/recording-alert/reco
 import { NativeAudio } from '@capacitor-community/native-audio';
 import confetti from 'canvas-confetti';
 import { VoiceRecorder } from 'capacitor-voice-recorder';
+import searchBody from '../../../assets/mock/searchBody.json'
 
 @Component({
   selector: 'app-search',
@@ -111,7 +112,11 @@ export class SearchPage implements OnInit, OnTabViewWillEnter {
   }
 
   async handleContentSearch(res?: any, audio: boolean = false) {
-    await this.searchApi.postContentSearch({query: res?.context ?? this.searchKeywords, filter: res?.filter ?? ''}, await this.storage.getData('lang')).then(searchRes => {
+
+    let req = searchBody;
+    req['message']['intent']['item']['descriptor'].name = res?.context ?? this.searchKeywords;
+
+    await this.searchApi.postContentSearch(req, await this.storage.getData('lang')).then(searchRes => {
       console.log('searchRes ', searchRes);
       this.telemetryGeneratorService.generateSearchTelemetry(audio ? 'audio': 'text', audio ? '' : this.searchKeywords, searchRes.length, 'search', '' )
       this.disabled = false;
