@@ -50,6 +50,27 @@ export class HttpCapacitorAdapter implements HttpClient {
         return this.invokeRequest(ApiHttpRequestType.POST, baseUrl + path, body, headers);
     }
 
+    checkMimieType(url: any)
+    {
+       
+        const mediaUrl = url;
+        console.log(mediaUrl);
+        console.log(mediaUrl.endsWith(".mp3"));
+
+
+        if (mediaUrl.endsWith(".mp3")) {
+            return 'audio/mp3' ; // // MP3 audio
+        } else if (mediaUrl.endsWith(".pdf")) {
+            return 'application/pdf';             // PDF document
+        } else if (mediaUrl.includes("youtube.com") || mediaUrl.includes("youtu.be")) {
+            return 'video/x-youtube'; //            // YouTube video
+        } else if (mediaUrl.endsWith(".mp4")) {
+            return 'video/mp4';            // MP4 video
+        } else {
+            return 'url';
+        }
+    }
+
     private invokeRequest(type: ApiHttpRequestType, url: string, parametersOrData: any,
                           headers: { [key: string]: string }): Observable<ApiResponse> {
         const observable = new Subject<ApiResponse>();
@@ -80,15 +101,17 @@ export class HttpCapacitorAdapter implements HttpClient {
             const mappedContent: ContentMetaData[] = [];
 
             response.data.message.catalog.providers.forEach((provider : any) => {
+
                 // Traverse through the items array of each provider
                 provider.items.forEach((item: any) => {
                     // Map item properties to ContentMetaData interface format
+                    let mimeType = item?.descriptor?.link ?  this.checkMimieType(item.descriptor.link) : 'url';
                     const content: ContentMetaData = {
                         identifier: item.id,
                         name: item.descriptor.name,
-                        thumbnail: item?.descriptor?.images.length ? (item?.descriptor?.images[0].url.split("/"))[0] : '', // You can populate this based on item properties
+                        thumbnail: item?.descriptor?.images.length ? item.descriptor?.images[0]?.url : '', // You can populate this based on item properties
                         description: item.descriptor.long_desc || item.descriptor.short_desc || '',
-                        mimetype: item?.descriptor?.PDF?.data ? "application/pdf" : "video/x-youtube", // You can populate this based on item properties
+                        mimetype: mimeType, //"application/pdf" : "video/x-youtube", // You can populate this based on item properties
                         url:     item?.descriptor?.PDF?.data
                         ? item.descriptor?.PDF?.data[0]?.url
                         : item?.descriptor?.link ,
@@ -109,10 +132,10 @@ export class HttpCapacitorAdapter implements HttpClient {
             
                     // Push the mapped object into the array
                     mappedContent.push(content);
-                    // console.log(mappedContent);
                 });
             });
-            
+            console.log(mappedContent);
+
             if(mappedContent){
             const apiResponse: ApiResponse = {
                 body: {
